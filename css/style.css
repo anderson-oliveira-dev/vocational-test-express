@@ -1,1 +1,76 @@
+/* ============ CORES DA MARCA ============ */
 .bg-unisertao { background-color: #0e3043 !important; }
+
+.text-brand { color: #0e3043 !important; }
+.bg-brand   { background-color: #0e3043 !important; }
+
+/* ============ BOTÕES ============ */
+.btn-brand {
+    background-color: #0e3043;
+    border-color: #0e3043;
+    color: #fff;
+    transition: background-color .2s ease,
+                border-color .2s ease,
+                transform .15s ease;
+}
+.btn-brand:hover,
+.btn-brand:focus {
+    background-color: #0a2433;
+    border-color: #0a2433;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.btn-outline-brand {
+    color: #0e3043;
+    border-color: #0e3043;
+    transition: background-color .2s ease, color .2s ease;
+}
+.btn-outline-brand:hover,
+.btn-outline-brand:focus {
+    background-color: #0e3043;
+    border-color: #0e3043;
+    color: #fff;
+}
+
+/* ============ CARDS COM HOVER ============ */
+.card-hover {
+    border-radius: .85rem !important;
+    transition: transform .25s cubic-bezier(.4, 0, .2, 1),
+                box-shadow .25s cubic-bezier(.4, 0, .2, 1);
+    will-change: transform;
+}
+.card-hover:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 16px 32px rgba(14, 48, 67, .15) !important;
+}
+
+/* ============ CÍRCULOS DE ÍCONE ============ */
+.icon-circle {
+    width: 72px;
+    height: 72px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+        rgba(14, 48, 67, .12) 0%,
+        rgba(14, 48, 67, .04) 100%);
+    color: #0e3043;
+    transition: background .3s ease, transform .3s ease;
+}
+.icon-circle-sm {
+    width: 56px;
+    height: 56px;
+}
+.card-hover:hover .icon-circle {
+    background: linear-gradient(135deg,
+        rgba(14, 48, 67, .22) 0%,
+        rgba(14, 48, 67, .08) 100%);
+    transform: scale(1.08);
+}
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 576px) {
+    .display-4 { font-size: 2.25rem; }
+}
