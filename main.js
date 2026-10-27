@@ -30,7 +30,7 @@ const App = {
                         <i class="bi bi-mortarboard-fill"></i>
                     </div>
                     <div class="d-flex flex-column lh-1">
-                        <span class="brand-title">Rede Unicertão | UniCesumar</span>
+                        <span class="brand-title">Rede Unisertão | UniCesumar</span>
                         <span class="brand-subtitle d-none d-sm-block">Teste Vocacional Express</span>
                     </div>
                 </router-link>
@@ -54,7 +54,7 @@ const App = {
             <div class="container">
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start gap-2">
                     <div>
-                        <strong>Rede Unicertão | UniCesumar</strong>
+                        <strong>Rede Unisertão | UniCesumar</strong>
                         <div class="opacity-75">Teste Vocacional Express</div>
                     </div>
                     <div class="opacity-75">
