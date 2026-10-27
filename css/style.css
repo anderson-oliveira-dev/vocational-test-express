@@ -147,3 +147,211 @@
 @media (max-width: 576px) {
     .display-4 { font-size: 2.25rem; }
 }
+
+/* ============ RESULT PAGE ============ */
+.result-card {
+    border-radius: 1rem;
+    border: 1px solid rgba(14, 48, 67, 0.08) !important;
+    box-shadow:
+        0 1px 2px rgba(14, 48, 67, 0.04),
+        0 4px 16px rgba(14, 48, 67, 0.06) !important;
+}
+
+.icon-circle-lg {
+    width: 88px;
+    height: 88px;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ============ RANKING ITEMS ============ */
+.rank-item {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    padding: 1rem 1.25rem;
+    border-radius: .75rem;
+    background: rgba(14, 48, 67, 0.02);
+    border: 1px solid rgba(14, 48, 67, 0.06);
+    transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.rank-item:hover {
+    background: rgba(14, 48, 67, 0.04);
+    border-color: rgba(14, 48, 67, 0.14);
+    transform: translateX(2px);
+}
+
+.rank-item.rank-first {
+    background: linear-gradient(135deg, rgba(25, 135, 84, 0.08), rgba(25, 135, 84, 0.02));
+    border-color: rgba(25, 135, 84, 0.2);
+}
+
+.rank-item.rank-first:hover {
+    border-color: rgba(25, 135, 84, 0.35);
+}
+
+.rank-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.rank-name {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.rank-count {
+    font-size: .85rem;
+    color: #6c757d;
+    white-space: nowrap;
+}
+
+/* ============ MEDALHAS ============ */
+.rank-medal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: .85rem;
+    flex-shrink: 0;
+    background: rgba(14, 48, 67, 0.08);
+    color: #0e3043;
+    transition: transform .2s ease;
+}
+
+.rank-medal-gold {
+    background: linear-gradient(135deg, #f4c542, #d4a017);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(212, 160, 23, 0.35);
+}
+
+.rank-medal-silver {
+    background: linear-gradient(135deg, #c0c5ce, #8a9098);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(138, 144, 152, 0.3);
+}
+
+.rank-medal-bronze {
+    background: linear-gradient(135deg, #d4906b, #b06e45);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(176, 110, 69, 0.3);
+}
+
+.rank-item:hover .rank-medal {
+    transform: scale(1.1);
+}
+
+/* ============ PROGRESS BAR ANIMADA ============ */
+.progress-animated {
+    height: 10px !important;
+    border-radius: 999px;
+    background: rgba(14, 48, 67, 0.08);
+    overflow: hidden;
+}
+
+.progress-animated .progress-bar {
+    border-radius: 999px;
+    animation: growBar 1.2s cubic-bezier(.4, 0, .2, 1) both;
+}
+
+.rank-item.rank-first .progress-animated .progress-bar {
+    background: linear-gradient(90deg, #198754, #20c997);
+}
+
+.rank-item:not(.rank-first) .progress-animated .progress-bar {
+    background: linear-gradient(90deg, #0e3043, #1a5276);
+}
+
+@keyframes growBar {
+    from { width: 0; }
+}
+
+/* ============ SEGUNDA ÁREA ============ */
+.second-area-card {
+    background: linear-gradient(135deg, rgba(14, 48, 67, 0.05), rgba(14, 48, 67, 0.01));
+    border: 1px solid rgba(14, 48, 67, 0.1);
+    border-radius: .85rem;
+    padding: 1.5rem;
+}
+
+.second-area-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .3rem .8rem;
+    background: rgba(14, 48, 67, 0.1);
+    color: #0e3043;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: .75rem;
+}
+
+/* ============ CURSOS ============ */
+.courses-section {
+    background: rgba(14, 48, 67, 0.02);
+    border: 1px solid rgba(14, 48, 67, 0.08);
+    border-radius: .85rem;
+    padding: 1.5rem;
+}
+
+.course-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: .5rem 1.1rem;
+    background: #fff;
+    color: #0e3043 !important;
+    border: 1px solid rgba(14, 48, 67, 0.15) !important;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 500;
+    animation: badgeFadeIn .45s ease-out both;
+    transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+    will-change: transform;
+}
+
+.course-badge:hover {
+    transform: translateY(-2px) scale(1.05);
+    background: #0e3043 !important;
+    color: #fff !important;
+    border-color: #0e3043 !important;
+    box-shadow: 0 6px 16px rgba(14, 48, 67, 0.2);
+}
+
+@keyframes badgeFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============ FADE IN GERAL ============ */
+.fade-in-up {
+    animation: fadeInUp .5s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
