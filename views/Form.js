@@ -35,7 +35,6 @@ export default {
             if (!canSeeResult.value) return
 
             const answersArray = questions.map((_, i) => answers.value[i])
-
             const encrypted = encryptData(answersArray)
 
             router.push({ name: 'result', query: { r: encrypted } })
@@ -48,71 +47,80 @@ export default {
         }
     },
     template: `
-        <div class="card shadow-sm">
-            <div class="card-body">
+        <div class="card quiz-card">
+            <div class="card-body p-4 p-md-5">
 
-                <div class="d-flex justify-content-between mb-2">
-                    <small class="text-muted">
+                <!-- ============ CABEÇALHO ============ -->
+                <div class="quiz-header">
+                    <span class="quiz-counter">
+                        <i class="bi bi-question-circle"></i>
                         Pergunta {{ index + 1 }} de {{ total }}
-                    </small>
-                    <small class="text-muted">
-                        {{ progress }}% respondido
-                    </small>
+                    </span>
+                    <span class="quiz-percent">{{ progress }}%</span>
                 </div>
 
-                <div class="progress mb-4" style="height: 8px;">
+                <div class="progress quiz-progress">
                     <div class="progress-bar" :style="{ width: progress + '%' }"></div>
                 </div>
 
-                <h5 class="fw-semibold mb-4">
-                    {{ currentQuestion.question }}
-                </h5>
+                <!-- ============ PERGUNTA + OPÇÕES (com transição) ============ -->
+                <Transition name="question-slide" mode="out-in" appear>
+                    <div :key="index">
 
-                <div class="d-flex flex-column gap-3">
-                    <label
-                        v-for="(opt, i) in currentQuestion.options"
-                        :key="i"
-                        class="form-check d-flex align-items-center gap-2 mb-0"
-                        style="cursor: pointer;"
-                    >
-                        <input
-                            class="form-check-input mt-0"
-                            type="radio"
-                            :name="'question-' + index"
-                            :value="i"
-                            :checked="answers[index] === i"
-                            @change="answer(i)"
-                        >
-                        <span class="form-check-label">
-                            {{ opt.text }}
-                        </span>
-                    </label>
-                </div>
+                        <h5 class="quiz-question">
+                            {{ currentQuestion.question }}
+                        </h5>
 
-                <div class="d-flex justify-content-between mt-4">
+                        <div class="d-flex flex-column gap-3">
+                            <label
+                                v-for="(opt, i) in currentQuestion.options"
+                                :key="i"
+                                class="option-item"
+                                :class="{ selected: answers[index] === i }"
+                            >
+                                <input
+                                    class="form-check-input mt-0"
+                                    type="radio"
+                                    :name="'question-' + index"
+                                    :value="i"
+                                    :checked="answers[index] === i"
+                                    @change="answer(i)"
+                                >
+                                <span class="option-text">{{ opt.text }}</span>
+                            </label>
+                        </div>
+
+                    </div>
+                </Transition>
+
+                <!-- ============ NAVEGAÇÃO ============ -->
+                <div class="quiz-nav">
                     <button
-                        class="btn btn-outline-secondary"
+                        class="btn btn-outline-brand"
                         :disabled="index === 0"
                         @click="previous"
                     >
-                        ← Anterior
+                        <i class="bi bi-arrow-left"></i>
+                        Anterior
                     </button>
 
                     <button
                         v-if="!isLast"
-                        class="btn btn-primary"
+                        class="btn btn-brand"
                         :disabled="!canGoNext"
                         @click="next"
                     >
-                        Próximo →
+                        Próximo
+                        <i class="bi bi-arrow-right"></i>
                     </button>
 
                     <button
                         v-if="isLast"
-                        class="btn btn-success"
+                        class="btn btn-finish"
                         :disabled="!canSeeResult"
                         @click="seeResult"
                     >
+                        <i class="bi bi-trophy-fill"></i>
                         Ver meu resultado
                     </button>
                 </div>
