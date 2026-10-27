@@ -1,3 +1,76 @@
+/* ============ LAYOUT GERAL (sticky footer) ============ */
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-main {
+    flex: 1 0 auto;
+}
+
+/* ============ NAVBAR ============ */
+.navbar-app {
+    background-color: #0e3043;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .12);
+}
+
+.navbar-app .brand-badge {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, .12);
+    border-radius: .5rem;
+    font-size: 1.25rem;
+    color: #fff;
+    transition: background-color .2s ease;
+}
+
+.navbar-app .navbar-brand:hover .brand-badge {
+    background: rgba(255, 255, 255, .20);
+}
+
+.navbar-app .brand-title {
+    font-weight: 600;
+    font-size: .95rem;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.navbar-app .brand-subtitle {
+    font-size: .72rem;
+    opacity: .75;
+    color: #fff;
+}
+
+/* ============ FOOTER ============ */
+.footer-app {
+    background-color: #0e3043;
+    color: rgba(255, 255, 255, .8);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    flex-shrink: 0;
+    font-size: .85rem;
+}
+
+.footer-app strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-app .footer-divider {
+    border-top: 1px solid rgba(255, 255, 255, .15);
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
 /* ============ CORES DA MARCA ============ */
 .bg-unisertao { background-color: #0e3043 !important; }
 
