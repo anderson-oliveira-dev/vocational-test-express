@@ -18,11 +18,11 @@ const router = createRouter({
 
 const App = {
     template: `
-        <nav class="navbar navbar-dark mb-4 bg-unicertao">
+        <nav class="navbar navbar-dark mb-4 bg-unisertao">
             <div class="container">
                 <router-link to="/" class="navbar-brand">
                     Rede Unicertão | UniCesumar
-                    <div class="fs-6"><small>Teste Vocacional Express</small></div>
+                    <div class="fs-6 opacity-75"><small>Teste Vocacional Express</small></div>
                 </router-link>
             </div>
         </nav>
