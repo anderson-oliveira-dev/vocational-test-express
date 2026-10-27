@@ -1,4 +1,53 @@
-/* ============ LAYOUT GERAL (sticky footer) ============ */
+/* =========================================================
+   1. VARIÁVEIS GLOBAIS
+   ========================================================= */
+:root {
+    /* Cores da marca */
+    --brand: #0e3043;
+    --brand-dark: #0a2433;
+
+    /* Verdes (sucesso) */
+    --success: #198754;
+    --success-light: #20c997;
+    --success-dark: #157347;
+
+    /* Medalhas */
+    --gold: #f4c542;
+    --gold-dark: #d4a017;
+    --silver: #c0c5ce;
+    --silver-dark: #8a9098;
+    --bronze: #d4906b;
+    --bronze-dark: #b06e45;
+
+    /* Marca em rgba (para gradientes e fundos sutis) */
+    --brand-02: rgba(14, 48, 67, .02);
+    --brand-04: rgba(14, 48, 67, .04);
+    --brand-05: rgba(14, 48, 67, .05);
+    --brand-06: rgba(14, 48, 67, .06);
+    --brand-08: rgba(14, 48, 67, .08);
+    --brand-10: rgba(14, 48, 67, .10);
+    --brand-12: rgba(14, 48, 67, .12);
+    --brand-14: rgba(14, 48, 67, .14);
+    --brand-15: rgba(14, 48, 67, .15);
+    --brand-20: rgba(14, 48, 67, .20);
+    --brand-22: rgba(14, 48, 67, .22);
+    --brand-30: rgba(14, 48, 67, .30);
+
+    /* Raios de borda */
+    --radius-sm: .5rem;
+    --radius-md: .75rem;
+    --radius-lg: .85rem;
+    --radius-xl: 1rem;
+    --radius-pill: 999px;
+
+    /* Easing padrão */
+    --ease-out: cubic-bezier(.4, 0, .2, 1);
+}
+
+
+/* =========================================================
+   2. BASE / LAYOUT (sticky footer)
+   ========================================================= */
 #app {
     min-height: 100vh;
     display: flex;
@@ -9,9 +58,21 @@
     flex: 1 0 auto;
 }
 
-/* ============ NAVBAR ============ */
+
+/* =========================================================
+   3. UTILITÁRIOS DA MARCA
+   ========================================================= */
+.bg-unisertao,
+.bg-brand { background-color: var(--brand) !important; }
+
+.text-brand { color: var(--brand) !important; }
+
+
+/* =========================================================
+   4. NAVBAR
+   ========================================================= */
 .navbar-app {
-    background-color: #0e3043;
+    background-color: var(--brand);
     position: sticky;
     top: 0;
     z-index: 1030;
@@ -27,7 +88,7 @@
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, .12);
-    border-radius: .5rem;
+    border-radius: var(--radius-sm);
     font-size: 1.25rem;
     color: #fff;
     transition: background-color .2s ease;
@@ -50,9 +111,12 @@
     color: #fff;
 }
 
-/* ============ FOOTER ============ */
+
+/* =========================================================
+   5. FOOTER
+   ========================================================= */
 .footer-app {
-    background-color: #0e3043;
+    background-color: var(--brand);
     color: rgba(255, 255, 255, .8);
     padding: 1.5rem 0;
     margin-top: 3rem;
@@ -71,16 +135,13 @@
     margin-top: 1rem;
 }
 
-/* ============ CORES DA MARCA ============ */
-.bg-unisertao { background-color: #0e3043 !important; }
 
-.text-brand { color: #0e3043 !important; }
-.bg-brand   { background-color: #0e3043 !important; }
-
-/* ============ BOTÕES ============ */
+/* =========================================================
+   6. BOTÕES
+   ========================================================= */
 .btn-brand {
-    background-color: #0e3043;
-    border-color: #0e3043;
+    background-color: var(--brand);
+    border-color: var(--brand);
     color: #fff;
     transition: background-color .2s ease,
                 border-color .2s ease,
@@ -88,37 +149,73 @@
 }
 .btn-brand:hover,
 .btn-brand:focus {
-    background-color: #0a2433;
-    border-color: #0a2433;
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
     color: #fff;
     transform: translateY(-1px);
 }
 
 .btn-outline-brand {
-    color: #0e3043;
-    border-color: #0e3043;
+    color: var(--brand);
+    border-color: var(--brand);
     transition: background-color .2s ease, color .2s ease;
 }
 .btn-outline-brand:hover,
 .btn-outline-brand:focus {
-    background-color: #0e3043;
-    border-color: #0e3043;
+    background-color: var(--brand);
+    border-color: var(--brand);
     color: #fff;
 }
 
-/* ============ CARDS COM HOVER ============ */
+.btn-finish {
+    background: linear-gradient(135deg, var(--success), var(--success-light));
+    border: none;
+    color: #fff;
+    transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+.btn-finish:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--success-dark), #1aa87e);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(25, 135, 84, .3);
+}
+.btn-finish:disabled {
+    background: #d1e7dd;
+    border: none;
+    color: #6c757d;
+    opacity: 1;
+}
+
+
+/* =========================================================
+   7. CARDS
+   ========================================================= */
+/* Cards de página (Form e Result — visual idêntico) */
+.result-card,
+.quiz-card {
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--brand-08) !important;
+    box-shadow:
+        0 1px 2px var(--brand-04),
+        0 4px 16px var(--brand-06) !important;
+}
+
+/* Cards com hover interativo (Home) */
 .card-hover {
-    border-radius: .85rem !important;
-    transition: transform .25s cubic-bezier(.4, 0, .2, 1),
-                box-shadow .25s cubic-bezier(.4, 0, .2, 1);
+    border-radius: var(--radius-lg) !important;
+    transition: transform .25s var(--ease-out),
+                box-shadow .25s var(--ease-out);
     will-change: transform;
 }
 .card-hover:hover {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 16px 32px rgba(14, 48, 67, .15) !important;
+    box-shadow: 0 16px 32px var(--brand-15) !important;
 }
 
-/* ============ CÍRCULOS DE ÍCONE ============ */
+
+/* =========================================================
+   8. CÍRCULOS DE ÍCONE
+   ========================================================= */
 .icon-circle {
     width: 72px;
     height: 72px;
@@ -126,69 +223,200 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: linear-gradient(135deg,
-        rgba(14, 48, 67, .12) 0%,
-        rgba(14, 48, 67, .04) 100%);
-    color: #0e3043;
+    background: linear-gradient(135deg, var(--brand-12) 0%, var(--brand-04) 100%);
+    color: var(--brand);
     transition: background .3s ease, transform .3s ease;
 }
 .icon-circle-sm {
     width: 56px;
     height: 56px;
 }
-.card-hover:hover .icon-circle {
-    background: linear-gradient(135deg,
-        rgba(14, 48, 67, .22) 0%,
-        rgba(14, 48, 67, .08) 100%);
-    transform: scale(1.08);
-}
-
-/* ============ RESPONSIVIDADE ============ */
-@media (max-width: 576px) {
-    .display-4 { font-size: 2.25rem; }
-}
-
-/* ============ RESULT PAGE ============ */
-.result-card {
-    border-radius: 1rem;
-    border: 1px solid rgba(14, 48, 67, 0.08) !important;
-    box-shadow:
-        0 1px 2px rgba(14, 48, 67, 0.04),
-        0 4px 16px rgba(14, 48, 67, 0.06) !important;
-}
-
 .icon-circle-lg {
     width: 88px;
     height: 88px;
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
+.card-hover:hover .icon-circle {
+    background: linear-gradient(135deg, var(--brand-22) 0%, var(--brand-08) 100%);
+    transform: scale(1.08);
+}
 
-/* ============ RANKING ITEMS ============ */
+
+/* =========================================================
+   9. ANIMAÇÕES COMPARTILHADAS (keyframes)
+   ========================================================= */
+.fade-in-up {
+    animation: fadeInUp .5s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes badgeFadeIn {
+    from { opacity: 0; transform: translateY(8px) scale(.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes growBar {
+    from { width: 0; }
+}
+
+
+/* =========================================================
+   10. FORM / QUIZ
+   ========================================================= */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .75rem;
+    gap: 1rem;
+}
+
+.quiz-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .35rem .9rem;
+    background: var(--brand-06);
+    border-radius: var(--radius-pill);
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--brand);
+}
+
+.quiz-percent {
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: .3px;
+}
+
+.quiz-progress {
+    height: 10px !important;
+    border-radius: var(--radius-pill);
+    background: var(--brand-08);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+.quiz-progress .progress-bar {
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--brand), #1a5276);
+    transition: width .4s var(--ease-out);
+}
+
+.quiz-question {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--brand);
+    line-height: 1.45;
+    margin-bottom: 1.75rem;
+    min-height: 2.6rem;
+}
+
+/* Opções (radio cards) */
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--brand-12);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    background: #fff;
+    margin: 0;
+    transition: border-color .2s ease,
+                background-color .2s ease,
+                transform .18s ease,
+                box-shadow .2s ease;
+}
+.option-item:hover {
+    border-color: var(--brand-30);
+    background: var(--brand-02);
+    transform: translateX(3px);
+}
+.option-item.selected {
+    border-color: var(--brand);
+    background: var(--brand-05);
+    box-shadow: 0 2px 10px var(--brand-08);
+}
+.option-item .form-check-input {
+    margin: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    width: 1.15rem;
+    height: 1.15rem;
+}
+.option-item .form-check-input:checked {
+    background-color: var(--brand);
+    border-color: var(--brand);
+}
+.option-text {
+    font-size: .95rem;
+    color: #2c3e50;
+    line-height: 1.4;
+}
+
+/* Transição entre perguntas */
+.question-slide-enter-active,
+.question-slide-leave-active {
+    transition: opacity .25s ease, transform .25s ease;
+}
+.question-slide-enter-from {
+    opacity: 0;
+    transform: translateX(30px);
+}
+.question-slide-leave-to {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+/* Navegação */
+.quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--brand-08);
+}
+.quiz-nav .btn {
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+
+/* =========================================================
+   11. RESULT
+   ========================================================= */
+/* Ranking */
 .rank-item {
     display: flex;
     flex-direction: column;
     gap: .75rem;
     padding: 1rem 1.25rem;
-    border-radius: .75rem;
-    background: rgba(14, 48, 67, 0.02);
-    border: 1px solid rgba(14, 48, 67, 0.06);
+    border-radius: var(--radius-md);
+    background: var(--brand-02);
+    border: 1px solid var(--brand-06);
     transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
 }
-
 .rank-item:hover {
-    background: rgba(14, 48, 67, 0.04);
-    border-color: rgba(14, 48, 67, 0.14);
+    background: var(--brand-04);
+    border-color: var(--brand-14);
     transform: translateX(2px);
 }
-
 .rank-item.rank-first {
-    background: linear-gradient(135deg, rgba(25, 135, 84, 0.08), rgba(25, 135, 84, 0.02));
-    border-color: rgba(25, 135, 84, 0.2);
+    background: linear-gradient(135deg, rgba(25, 135, 84, .08), rgba(25, 135, 84, .02));
+    border-color: rgba(25, 135, 84, .2);
 }
-
 .rank-item.rank-first:hover {
-    border-color: rgba(25, 135, 84, 0.35);
+    border-color: rgba(25, 135, 84, .35);
 }
 
 .rank-header {
@@ -212,7 +440,7 @@
     white-space: nowrap;
 }
 
-/* ============ MEDALHAS ============ */
+/* Medalhas */
 .rank-medal {
     display: inline-flex;
     align-items: center;
@@ -223,74 +451,62 @@
     font-weight: 700;
     font-size: .85rem;
     flex-shrink: 0;
-    background: rgba(14, 48, 67, 0.08);
-    color: #0e3043;
+    background: var(--brand-08);
+    color: var(--brand);
     transition: transform .2s ease;
 }
-
 .rank-medal-gold {
-    background: linear-gradient(135deg, #f4c542, #d4a017);
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
     color: #fff;
-    box-shadow: 0 2px 8px rgba(212, 160, 23, 0.35);
+    box-shadow: 0 2px 8px rgba(212, 160, 23, .35);
 }
-
 .rank-medal-silver {
-    background: linear-gradient(135deg, #c0c5ce, #8a9098);
+    background: linear-gradient(135deg, var(--silver), var(--silver-dark));
     color: #fff;
-    box-shadow: 0 2px 8px rgba(138, 144, 152, 0.3);
+    box-shadow: 0 2px 8px rgba(138, 144, 152, .3);
 }
-
 .rank-medal-bronze {
-    background: linear-gradient(135deg, #d4906b, #b06e45);
+    background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
     color: #fff;
-    box-shadow: 0 2px 8px rgba(176, 110, 69, 0.3);
+    box-shadow: 0 2px 8px rgba(176, 110, 69, .3);
 }
-
 .rank-item:hover .rank-medal {
     transform: scale(1.1);
 }
 
-/* ============ PROGRESS BAR ANIMADA ============ */
+/* Progress bar animada */
 .progress-animated {
     height: 10px !important;
-    border-radius: 999px;
-    background: rgba(14, 48, 67, 0.08);
+    border-radius: var(--radius-pill);
+    background: var(--brand-08);
     overflow: hidden;
 }
-
 .progress-animated .progress-bar {
-    border-radius: 999px;
-    animation: growBar 1.2s cubic-bezier(.4, 0, .2, 1) both;
+    border-radius: var(--radius-pill);
+    animation: growBar 1.2s var(--ease-out) both;
 }
-
 .rank-item.rank-first .progress-animated .progress-bar {
-    background: linear-gradient(90deg, #198754, #20c997);
+    background: linear-gradient(90deg, var(--success), var(--success-light));
 }
-
 .rank-item:not(.rank-first) .progress-animated .progress-bar {
-    background: linear-gradient(90deg, #0e3043, #1a5276);
+    background: linear-gradient(90deg, var(--brand), #1a5276);
 }
 
-@keyframes growBar {
-    from { width: 0; }
-}
-
-/* ============ SEGUNDA ÁREA ============ */
+/* Segunda área */
 .second-area-card {
-    background: linear-gradient(135deg, rgba(14, 48, 67, 0.05), rgba(14, 48, 67, 0.01));
-    border: 1px solid rgba(14, 48, 67, 0.1);
-    border-radius: .85rem;
+    background: linear-gradient(135deg, var(--brand-05), var(--brand-02));
+    border: 1px solid var(--brand-10);
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
 }
-
 .second-area-badge {
     display: inline-flex;
     align-items: center;
     gap: .4rem;
     padding: .3rem .8rem;
-    background: rgba(14, 48, 67, 0.1);
-    color: #0e3043;
-    border-radius: 999px;
+    background: var(--brand-10);
+    color: var(--brand);
+    border-radius: var(--radius-pill);
     font-size: .72rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -298,226 +514,43 @@
     margin-bottom: .75rem;
 }
 
-/* ============ CURSOS ============ */
+/* Cursos */
 .courses-section {
-    background: rgba(14, 48, 67, 0.02);
-    border: 1px solid rgba(14, 48, 67, 0.08);
-    border-radius: .85rem;
+    background: var(--brand-02);
+    border: 1px solid var(--brand-08);
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
 }
-
 .course-badge {
     display: inline-flex;
     align-items: center;
     padding: .5rem 1.1rem;
     background: #fff;
-    color: #0e3043 !important;
-    border: 1px solid rgba(14, 48, 67, 0.15) !important;
-    border-radius: 999px;
+    color: var(--brand) !important;
+    border: 1px solid var(--brand-15) !important;
+    border-radius: var(--radius-pill);
     font-size: .85rem;
     font-weight: 500;
     animation: badgeFadeIn .45s ease-out both;
-    transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+    transition: transform .2s ease,
+                box-shadow .2s ease,
+                background-color .2s ease,
+                border-color .2s ease,
+                color .2s ease;
     will-change: transform;
 }
-
 .course-badge:hover {
     transform: translateY(-2px) scale(1.05);
-    background: #0e3043 !important;
+    background: var(--brand) !important;
     color: #fff !important;
-    border-color: #0e3043 !important;
-    box-shadow: 0 6px 16px rgba(14, 48, 67, 0.2);
+    border-color: var(--brand) !important;
+    box-shadow: 0 6px 16px var(--brand-20);
 }
 
-@keyframes badgeFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
 
-/* ============ FADE IN GERAL ============ */
-.fade-in-up {
-    animation: fadeInUp .5s ease-out both;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ============ FORM / QUIZ PAGE ============ */
-.quiz-card {
-    border-radius: 1rem;
-    border: 1px solid rgba(14, 48, 67, 0.08) !important;
-    box-shadow:
-        0 1px 2px rgba(14, 48, 67, 0.04),
-        0 4px 16px rgba(14, 48, 67, 0.06) !important;
-}
-
-/* ============ CABEÇALHO (contador + %) ============ */
-.quiz-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: .75rem;
-    gap: 1rem;
-}
-
-.quiz-counter {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    padding: .35rem .9rem;
-    background: rgba(14, 48, 67, 0.06);
-    border-radius: 999px;
-    font-size: .8rem;
-    font-weight: 600;
-    color: #0e3043;
-}
-
-.quiz-percent {
-    font-size: .8rem;
-    font-weight: 700;
-    color: #0e3043;
-    letter-spacing: .3px;
-}
-
-/* ============ PROGRESS BAR ============ */
-.quiz-progress {
-    height: 10px !important;
-    border-radius: 999px;
-    background: rgba(14, 48, 67, 0.08);
-    overflow: hidden;
-    margin-bottom: 2rem;
-}
-
-.quiz-progress .progress-bar {
-    border-radius: 999px;
-    background: linear-gradient(90deg, #0e3043, #1a5276);
-    transition: width .4s cubic-bezier(.4, 0, .2, 1);
-}
-
-/* ============ PERGUNTA ============ */
-.quiz-question {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #0e3043;
-    line-height: 1.45;
-    margin-bottom: 1.75rem;
-    min-height: 2.6rem;
-}
-
-/* ============ OPÇÕES (radio cards) ============ */
-.option-item {
-    display: flex;
-    align-items: center;
-    gap: .9rem;
-    padding: 1rem 1.15rem;
-    border: 1px solid rgba(14, 48, 67, 0.12);
-    border-radius: .75rem;
-    cursor: pointer;
-    background: #fff;
-    margin: 0;
-    transition: border-color .2s ease,
-                background-color .2s ease,
-                transform .18s ease,
-                box-shadow .2s ease;
-}
-
-.option-item:hover {
-    border-color: rgba(14, 48, 67, 0.3);
-    background: rgba(14, 48, 67, 0.02);
-    transform: translateX(3px);
-}
-
-.option-item.selected {
-    border-color: #0e3043;
-    background: rgba(14, 48, 67, 0.05);
-    box-shadow: 0 2px 10px rgba(14, 48, 67, 0.08);
-}
-
-.option-item .form-check-input {
-    margin: 0;
-    flex-shrink: 0;
-    cursor: pointer;
-    width: 1.15rem;
-    height: 1.15rem;
-}
-
-.option-item .form-check-input:checked {
-    background-color: #0e3043;
-    border-color: #0e3043;
-}
-
-.option-text {
-    font-size: .95rem;
-    color: #2c3e50;
-    line-height: 1.4;
-}
-
-/* ============ TRANSIÇÃO ENTRE PERGUNTAS ============ */
-.question-slide-enter-active,
-.question-slide-leave-active {
-    transition: opacity .25s ease, transform .25s ease;
-}
-
-.question-slide-enter-from {
-    opacity: 0;
-    transform: translateX(30px);
-}
-
-.question-slide-leave-to {
-    opacity: 0;
-    transform: translateX(-30px);
-}
-
-/* ============ NAVEGAÇÃO ============ */
-.quiz-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(14, 48, 67, 0.08);
-}
-
-.quiz-nav .btn {
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-}
-
-/* ============ BOTÃO FINAL DESTACADO ============ */
-.btn-finish {
-    background: linear-gradient(135deg, #198754, #20c997);
-    border: none;
-    color: #fff;
-    transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
-}
-
-.btn-finish:hover:not(:disabled) {
-    background: linear-gradient(135deg, #157347, #1aa87e);
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(25, 135, 84, 0.3);
-}
-
-.btn-finish:disabled {
-    background: #d1e7dd;
-    border: none;
-    color: #6c757d;
-    opacity: 1;
+/* =========================================================
+   12. RESPONSIVIDADE
+   ========================================================= */
+@media (max-width: 576px) {
+    .display-4 { font-size: 2.25rem; }
 }
